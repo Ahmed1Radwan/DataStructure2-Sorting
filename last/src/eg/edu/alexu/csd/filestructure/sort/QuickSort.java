@@ -2,11 +2,55 @@ package eg.edu.alexu.csd.filestructure.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Vector;
 
 public class QuickSort {
 	
 	
+	public static void sort(ArrayList<Comparable> arr) {
+		
+		
+		part(arr,0,arr.size()-1);
+		
+	}
+
+	private static void part(ArrayList<Comparable> arr, int l, int r) {
+		// TODO Auto-generated method stub
+		if(l<r) {
+			part(arr,l,(l+r)/2);
+			part(arr,(l+r)/2+1,r);
+			merge(arr,l,r);
+		}
+	}
+
+	private static void merge(ArrayList<Comparable> arr, int l, int r) {
+		// TODO Auto-generated method stub
+		int mid = (l+r)/2+1,i=l,j=mid;
+		Vector<Comparable> tmp = new Vector();
+		
+		while(i<mid && j<=r) {
+			Comparable x = arr.get(i);
+			Comparable y = arr.get(j);
+			if(x.compareTo(y)<0) {
+				tmp.add(arr.get(i++));
+			}else {
+				tmp.add(arr.get(j++));
+			}
+		}
+		while(i<mid) {
+			tmp.add(arr.get(i++));
+		}
+		while(j<=r) {
+			tmp.add(arr.get(j++));
+		}
+		j=0;
+		for(i =l;i<=r;i++) {
+			arr.set(i, tmp.get(j++));
+		}
+	}
 	
+	
+	/*
     private static int partition(ArrayList<Comparable> arr, int low, int high)
     {
         Comparable pivot = arr.get(high);
@@ -50,6 +94,6 @@ public class QuickSort {
     	
         
     }
-    
+    */
 
 }

@@ -46,7 +46,8 @@ public class Sorting  implements ISort{
                 unordered.set(i-1,heap.extract());
             }
             */
-    		QuickSort.sort(unordered,0,unordered.size()-1);
+    		QuickSort.sort(unordered);
+    		//QuickSort.sort(unordered,0,unordered.size()-1);
     		//QuickSort.bottomUp(unordered);
     	}catch(NullPointerException e) {
     		System.out.println("Null array not expected");
